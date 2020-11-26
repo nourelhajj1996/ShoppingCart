@@ -1,0 +1,30 @@
+<div style="padding: 15px;">
+    <h1>Items in basket</h1>
+
+    <div class="products-container">
+        <div *ngFor="let product of productsInBasket" class="product-container">
+            <img src="{{ product.imageSrc }}" width="125" class="product-image"><img>
+            <div class="product">
+                <div class="product-info">
+                    <div class="product-name">
+                        <h3>{{ product.name }} {{ product.id }}</h3>
+                        <p>{{ product.description }}</p>
+                    </div>
+
+                    <div class="product-quantity">
+                        <div class="quantity">
+                            <button class="quantity-button" (click)="incrementQuantity(product.id)">+</button>
+                            <span class="quantity-number">{{ product.quantity }}</span>
+                            <button class="quantity-button" (click)="decrementQuantity(product.id)">-</button>
+                        </div>
+                        <p type="button" class="btn btn-link remove-button" (click)="removeFromBasket(product.id)">Remove from basket</p>
+                    </div>
+                </div>
+                <div class="product-price">
+                    <h4>Price</h4>
+                    <p>{{ getTotalProductPrice(product.price, product.quantity) }}<span class="price-currency"> Kr.</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

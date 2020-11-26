@@ -1,0 +1,84 @@
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * The content below * * * * * * * * * * * -->
+<!-- * * * * * * * * * * is only a placeholder * * * * * * * * * * -->
+<!-- * * * * * * * * * * and can be replaced. * * * * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+<!-- * * * * * * * * * Delete the template below * * * * * * * * * * -->
+<!-- * * * * * * * to get started with your project! * * * * * * * * -->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * -->
+
+<style>
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .toolbar {
+    height: 60px;
+    margin: -8px;
+    display: flex;
+    align-items: center;
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .basket-button {
+    color: blanchedalmond; 
+    font-size: 24px; 
+    padding-right: 15px; 
+    margin-right: 15px;
+  }
+
+  .products {
+    color: blanchedalmond;
+    font-size: 24px;
+    padding-left: 15px;
+    margin-left: 15px;
+  }
+</style>
+
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <p class="btn btn-link products" (click)="navigateToProductsList()">Products</p>
+  <div class="spacer"></div>
+  <p class="btn btn-link basket-button" (click)="navigateToBasket()">
+    <i class="fas fa-shopping-cart"></i>
+  </p>
+</div>
+
+<app-products-page *ngIf="!showBasket"
+  [products]="products"
+  (addToProductsInBasket)="addProductToBasket($event)">
+</app-products-page>
+<app-basket-page *ngIf="showBasket"
+  [productsInBasket]="productsInBasket"
+  (removeProductFromBasket)="removeProductFromBasket($event)"
+></app-basket-page>
+
+<!--router-outlet></router-outlet-->

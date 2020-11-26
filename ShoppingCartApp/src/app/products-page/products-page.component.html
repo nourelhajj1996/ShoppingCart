@@ -1,0 +1,17 @@
+<div style="padding: 15px;">
+    <h1>Products</h1>
+
+    <div class="products-container">
+        <div *ngFor="let product of products" class="product-container">
+            <img src="{{ product.imageSrc }}" width="125" class="product-image"><img>
+            <div class="product-info">
+                <div>
+                    <h3>{{ product.name }} {{ product.id }}</h3>
+                    <p>{{ product.description }}</p>
+                    <p><span>DKK </span> {{ product.price }}</p>
+                </div>
+                <button (click)="addProductToBasket(product)">Add to basket</button>
+            </div>
+        </div>
+    </div>
+</div>
